@@ -9,6 +9,11 @@ html {
 *::after {
     box-sizing: inherit;
 }
+*:focus {
+    outline: 2px dotted #de2e54;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
 
 body{
     display: flex;
@@ -39,4 +44,138 @@ img {
 
 .main-content {
     flex-grow: 1;
+}
+
+.site-header {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    background-color: aqua;
+}
+.site-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.site-header-logo {
+    display: flex;
+    margin-left: -200px;
+    align-items: center;
+    text-decoration: none;
+    color: #222 ;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.site-header-logo:hover {
+    color: chocolate;
+}
+.site-header-logo-img {
+    margin-right: 16px;
+    border-radius: 50%;
+}
+.site-header-logo-text {
+}
+.sitenav {
+}
+.sitenav-list {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.sitenav-item {
+    margin-right: 32px;
+}
+.sitenav-link {
+    display: block;
+    color: #222;
+    text-decoration: none;
+}
+.sitenav-link:hover {
+    color: chocolate;
+}
+.main-link {
+    display: inline-block;
+    padding: 10px 22px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    background-color: #de2e54;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.main-link:hover {
+    border-color: #de2e54;
+    background-color: #fff;
+    color: #de2e54;
+}
+
+/* site-footer  */
+
+.site-footer {
+padding-top: 24px;
+padding-bottom: 24px;
+background-color: #222;
+color: #fff;
+}
+.site-footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-footer-logo {
+    color: #fff;
+}
+
+.sitenav-footer .sitenav-link {
+    color: #fff;
+}
+
+.sitenav-footer .sitenav-link:hover {
+    color: #de2e54;
+}
+
+.hero {
+    background-color: greenyellow;
+    color: #fff;
+}
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+
+}
+.hero-content {
+    width: 500px;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    position: relative;
+    left: -200px;
+    top: 100px;
+}
+.hero-heading {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 36px;
+    line-height: 1.2;
+}
+.hero-text {
+    width: 440px;
+    margin-top: 0;
+    margin-bottom: 36px;
+
+}
+.main-link-solid {
+    background-color: chocolate;
+    color: #fff;
+}
+.hero-img {
+    align-self: flex-end;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    
 }
