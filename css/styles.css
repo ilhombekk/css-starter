@@ -17,6 +17,17 @@ html {
     border-radius: 2px;
 }
 
+@media (max-width: 600px) {
+body {
+font-size: 14px;
+}
+.header, .footer, .main {
+padding: 10px;
+}
+  /* boshqa kichik ekranlar uchun moslashuvlar */
+}
+
+
 body{
     display: flex;
     flex-direction: column;
@@ -28,7 +39,6 @@ body{
     height: 100%;
     background-color: #fff;
     color: #222;
-    overflow-x: hidden;
 }
 
 img {
