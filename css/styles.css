@@ -4,6 +4,8 @@ html {
     scroll-behavior: smooth;
 }
 
+@media (max-width: 768px)
+
 *,
 *::before,
 *::after {
@@ -26,6 +28,7 @@ body{
     height: 100%;
     background-color: #fff;
     color: #222;
+    overflow-x: hidden;
 }
 
 img {
@@ -40,6 +43,7 @@ img {
     padding-right: 50px;
     margin-left: auto;
     margin-left: auto;
+    padding: 10px;
 } 
 
 .main-content {
@@ -146,16 +150,11 @@ color: #fff;
 }
 .hero-container {
     display: flex;
-    justify-content: space-between;
-
 }
 .hero-content {
     width: 500px;
     padding-top: 120px;
     padding-bottom: 120px;
-    position: relative;
-    left: -200px;
-    top: 100px;
 }
 .hero-heading {
     margin-top: 0;
@@ -174,8 +173,7 @@ color: #fff;
     color: #fff;
 }
 .hero-img {
-    align-self: flex-end;
-    border: 1px solid #fff;
-    border-radius: 31px;
+    justify-content: space-between;
+    border-radius: 30px;
     
 }
