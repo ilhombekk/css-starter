@@ -1,70 +1,317 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learnncode</title>
-    <!-- stylesheet -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 Kunlik Inglizcha So‘zlar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: url(../img/Unify.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    h1, h2 {
+      text-align: center;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    #wordsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .word {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 0;
+      padding: 10px;
+      width: 100%;
+      background: rgba(255,255,255,0.9);
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      flex-wrap: wrap;
+    }
+
+    .word:hover {
+      background: #e0f7fa;
+      transform: scale(1.02);
+    }
+
+    .word span {
+      margin: 2px 5px;
+      flex: 1 1 30%;
+      text-align: center;
+    }
+
+    .controls {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      background: #0077b6;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #0096c7;
+    }
+
+    @media (max-width: 600px) {
+      .word span {
+        flex: 1 1 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    
-    <header class="site-header">
-    <div class="site-header-container container">
-    <a class="site-header-logo" href="#">
-        <img class="site-header-logo-img" src="img/avatar.jpg" alt="avatar" width="50" height="50">
-        <span class="site-header-logo-text">Learnncode</span>
-    </a>
-    <nav class="sitenav">
-    <ul class="sitenav-list">
-    <li class="sitenav-item"><a class="sitenav-link" href="#">Men xaqimda</a></li>
-    <li class="sitenav-item"><a class="sitenav-link" href="#">g`oyalar</a></li>
-    <li class="sitenav-item"><a class="sitenav-link" href="#">o`yinlar</a></li>
-    <li class="sitenav-item"><a class="sitenav-link" href="#">topishmoqlar</a></li>
-    <li class="sitenav-item"><a class="sitenav-link" href="#">mening qiziqishlarim</a></li>
-    </ul>
-    </nav>
-    <a class="main-link" href="index2.html">Qabulga yozilish</a>
-    </div>
-    </header>
+  <h1>7 Kunlik Inglizcha So‘zlar</h1>
+  <h2 id="dayTitle"></h2>
+  <div id="wordsContainer"></div>
+  <div class="controls">
+    <button id="prevBtn">Oldingi kun</button>
+    <button id="nextBtn">Keyingi kun</button>
+  </div>
 
-    <!-- main content  -->
+  <script>
+    const weekWords = [
+      {
+        day: "1-kun",
+        words: [
+          {text: "Hello", pronunciation: "he-lo", uz: "Salom"},
+          {text: "Goodbye", pronunciation: "gud-bay", uz: "Xayr"},
+          {text: "Please", pronunciation: "pleez", uz: "Iltimos"},
+          {text: "Thank you", pronunciation: "thank yu", uz: "Rahmat"},
+          {text: "Yes", pronunciation: "yes", uz: "Ha"},
+          {text: "No", pronunciation: "no", uz: "Yo‘q"},
+          {text: "Sorry", pronunciation: "sori", uz: "Kechirasiz"},
+          {text: "Excuse me", pronunciation: "eks-kyuz mi", uz: "Uzr"},
+          {text: "Friend", pronunciation: "frend", uz: "Do‘st"},
+          {text: "Family", pronunciation: "fa-me-ly", uz: "Oila"},
+          {text: "Morning", pronunciation: "mor-ning", uz: "Ertalab"},
+          {text: "Night", pronunciation: "nayt", uz: "Tun"},
+          {text: "Food", pronunciation: "fud", uz: "Oziq-ovqat"},
+          {text: "Water", pronunciation: "wo-ter", uz: "Suv"},
+          {text: "House", pronunciation: "haus", uz: "Uy"},
+          {text: "School", pronunciation: "skul", uz: "Maktab"},
+          {text: "Book", pronunciation: "buk", uz: "Kitob"},
+          {text: "Pen", pronunciation: "pen", uz: "Ruchka"},
+          {text: "Chair", pronunciation: "cher", uz: "Stul"},
+          {text: "Table", pronunciation: "tey-bul", uz: "Stol"},
+        ]
+      },
+      {
+        day: "2-kun",
+        words: [
+          {text: "Car", pronunciation: "kar", uz: "Mashina"},
+          {text: "Bus", pronunciation: "bas", uz: "Avtobus"},
+          {text: "Train", pronunciation: "treyn", uz: "Poyezd"},
+          {text: "Airport", pronunciation: "er-port", uz: "Aeroport"},
+          {text: "Ticket", pronunciation: "tik-it", uz: "Chipta"},
+          {text: "Bag", pronunciation: "bag", uz: "Sumka"},
+          {text: "Clothes", pronunciation: "klowdz", uz: "Kiyim"},
+          {text: "Shoes", pronunciation: "shooz", uz: "Oyoq kiyim"},
+          {text: "Hat", pronunciation: "hat", uz: "Shlyapa"},
+          {text: "Sun", pronunciation: "san", uz: "Quyosh"},
+          {text: "Moon", pronunciation: "mun", uz: "Oy"},
+          {text: "Star", pronunciation: "star", uz: "Yulduz"},
+          {text: "Sky", pronunciation: "skay", uz: "Osmon"},
+          {text: "Rain", pronunciation: "reyn", uz: "Yomg‘ir"},
+          {text: "Snow", pronunciation: "sno", uz: "Qor"},
+          {text: "Wind", pronunciation: "wind", uz: "Shamol"},
+          {text: "Hot", pronunciation: "hat", uz: "Issiq"},
+          {text: "Cold", pronunciation: "kohld", uz: "Sovuq"},
+          {text: "Summer", pronunciation: "sam-er", uz: "Yoz"},
+          {text: "Winter", pronunciation: "win-ter", uz: "Qish"},
+        ]
+      },
+      {
+        day: "3-kun",
+        words: [
+          {text: "Dog", pronunciation: "dog", uz: "It"},
+          {text: "Cat", pronunciation: "kat", uz: "Mushuk"},
+          {text: "Bird", pronunciation: "berd", uz: "Qush"},
+          {text: "Fish", pronunciation: "fish", uz: "Baliq"},
+          {text: "Cow", pronunciation: "kau", uz: "Sigir"},
+          {text: "Horse", pronunciation: "hors", uz: "Ot"},
+          {text: "Sheep", pronunciation: "ship", uz: "Qo‘y"},
+          {text: "Pig", pronunciation: "pig", uz: "Cho‘chqa"},
+          {text: "Rabbit", pronunciation: "rab-it", uz: "Quyon"},
+          {text: "Chicken", pronunciation: "chik-en", uz: "Tovuq"},
+          {text: "Apple", pronunciation: "ap-ul", uz: "Olma"},
+          {text: "Banana", pronunciation: "ba-na-na", uz: "Banan"},
+          {text: "Orange", pronunciation: "or-inj", uz: "Apelsin"},
+          {text: "Grapes", pronunciation: "greypz", uz: "Uzum"},
+          {text: "Milk", pronunciation: "milk", uz: "Sut"},
+          {text: "Juice", pronunciation: "joo-s", uz: "Sharbat"},
+          {text: "Bread", pronunciation: "bred", uz: "Non"},
+          {text: "Butter", pronunciation: "but-er", uz: "Sariyog‘"},
+          {text: "Cheese", pronunciation: "cheez", uz: "Pishloq"},
+          {text: "Egg", pronunciation: "eg", uz: "Tuxum"},
+        ]
+      },
+      {
+        day: "4-kun",
+        words: [
+          {text: "City", pronunciation: "si-ti", uz: "Shahar"},
+          {text: "Village", pronunciation: "vil-ij", uz: "Qishloq"},
+          {text: "Street", pronunciation: "street", uz: "Ko‘cha"},
+          {text: "Road", pronunciation: "rod", uz: "Yo‘l"},
+          {text: "Market", pronunciation: "mar-ket", uz: "Bozor"},
+          {text: "Shop", pronunciation: "shop", uz: "Do‘kon"},
+          {text: "Hospital", pronunciation: "hos-pi-tal", uz: "Kasalxona"},
+          {text: "School", pronunciation: "skul", uz: "Maktab"},
+          {text: "Park", pronunciation: "park", uz: "Bog‘"},
+          {text: "Bank", pronunciation: "bank", uz: "Bank"},
+          {text: "Police", pronunciation: "po-lees", uz: "Politsiya"},
+          {text: "Fire", pronunciation: "fayr", uz: "Olov"},
+          {text: "Bus stop", pronunciation: "bas stop", uz: "Avtobus bekati"},
+          {text: "Train station", pronunciation: "treyn stey-shun", uz: "Vokzal"},
+          {text: "Library", pronunciation: "ly-brer-i", uz: "Kutubxona"},
+          {text: "Cinema", pronunciation: "sin-e-ma", uz: "Kino"},
+          {text: "Museum", pronunciation: "myu-zee-um", uz: "Muzey"},
+          {text: "Bridge", pronunciation: "brij", uz: "Ko‘prik"},
+          {text: "Square", pronunciation: "skwair", uz: "Maydon"},
+          {text: "Tower", pronunciation: "taw-er", uz: "Minor"},
+        ]
+      },
+      {
+        day: "5-kun",
+        words: [
+          {text: "Run", pronunciation: "ran", uz: "Yugurish"},
+          {text: "Walk", pronunciation: "wok", uz: "Yurish"},
+          {text: "Jump", pronunciation: "jump", uz: "Sakrash"},
+          {text: "Swim", pronunciation: "swim", uz: "Suzish"},
+          {text: "Dance", pronunciation: "dans", uz: "Raqs"},
+          {text: "Sing", pronunciation: "sing", uz: "Qo‘shiq aytish"},
+          {text: "Read", pronunciation: "reed", uz: "O‘qish"},
+          {text: "Write", pronunciation: "rayt", uz: "Yozish"},
+          {text: "Listen", pronunciation: "lis-en", uz: "Tinglash"},
+          {text: "Speak", pronunciation: "speek", uz: "Gapirish"},
+          {text: "Eat", pronunciation: "eet", uz: "Yeyish"},
+          {text: "Drink", pronunciation: "dringk", uz: "Ichish"},
+          {text: "Sleep", pronunciation: "sleep", uz: "Uxlash"},
+          {text: "Wake up", pronunciation: "weyk ap", uz: "Uyg‘onish"},
+          {text: "Sit", pronunciation: "sit", uz: "O‘tirish"},
+          {text: "Stand", pronunciation: "stand", uz: "Turish"},
+          {text: "Play", pronunciation: "pley", uz: "O‘ynash"},
+          {text: "Work", pronunciation: "work", uz: "Ishlash"},
+          {text: "Drive", pronunciation: "drayv", uz: "Haydash"},
+          {text: "Ride", pronunciation: "rayd", uz: "Minish"},
+        ]
+      },
+      {
+        day: "6-kun",
+        words: [
+          {text: "Happy", pronunciation: "hap-i", uz: "Baxtli"},
+          {text: "Sad", pronunciation: "sad", uz: "Xafa"},
+          {text: "Angry", pronunciation: "ang-ri", uz: "G‘azablangan"},
+          {text: "Tired", pronunciation: "tayrd", uz: "Charchagan"},
+          {text: "Excited", pronunciation: "ik-say-tid", uz: "Hayajonlangan"},
+          {text: "Bored", pronunciation: "bord", uz: "Charchagan"},
+          {text: "Hungry", pronunciation: "hung-ri", uz: "Och"},
+          {text: "Thirsty", pronunciation: "thir-sti", uz: "Chanqagan"},
+          {text: "Hot", pronunciation: "hat", uz: "Issiq"},
+          {text: "Cold", pronunciation: "kohld", uz: "Sovuq"},
+          {text: "Beautiful", pronunciation: "byu-ti-ful", uz: "Chiroyli"},
+          {text: "Ugly", pronunciation: "uhg-li", uz: "Xunuk"},
+          {text: "Big", pronunciation: "big", uz: "Katta"},
+          {text: "Small", pronunciation: "smol", uz: "Kichik"},
+          {text: "Fast", pronunciation: "fast", uz: "Tez"},
+          {text: "Slow", pronunciation: "sloh", uz: "Sekin"},
+          {text: "Young", pronunciation: "yung", uz: "Yosh"},
+          {text: "Old", pronunciation: "ohld", uz: "Katta yoshda"},
+          {text: "Strong", pronunciation: "strong", uz: "Kuchli"},
+          {text: "Weak", pronunciation: "week", uz: "Zaif"},
+        ]
+      },
+      {
+        day: "7-kun",
+        words: [
+          {text: "Monday", pronunciation: "mun-day", uz: "Dushanba"},
+          {text: "Tuesday", pronunciation: "tyooz-day", uz: "Seshanba"},
+          {text: "Wednesday", pronunciation: "wenz-day", uz: "Chorshanba"},
+          {text: "Thursday", pronunciation: "thurz-day", uz: "Payshanba"},
+          {text: "Friday", pronunciation: "frai-day", uz: "Juma"},
+          {text: "Saturday", pronunciation: "sat-er-day", uz: "Shanba"},
+          {text: "Sunday", pronunciation: "sun-day", uz: "Yakshanba"},
+          {text: "Morning", pronunciation: "mor-ning", uz: "Ertalab"},
+          {text: "Afternoon", pronunciation: "af-ter-noon", uz: "Kunduzi"},
+          {text: "Evening", pronunciation: "eev-ning", uz: "Kechqurun"},
+          {text: "Night", pronunciation: "nayt", uz: "Tun"},
+          {text: "Today", pronunciation: "to-day", uz: "Bugun"},
+          {text: "Tomorrow", pronunciation: "to-mor-row", uz: "Ertaga"},
+          {text: "Yesterday", pronunciation: "yes-ter-day", uz: "Kecha"},
+          {text: "Week", pronunciation: "week", uz: "Hafta"},
+          {text: "Month", pronunciation: "month", uz: "Oy"},
+          {text: "Year", pronunciation: "yer", uz: "Yil"},
+          {text: "Time", pronunciation: "taym", uz: "Vaqt"},
+          {text: "Day", pronunciation: "day", uz: "Kun"},
+          {text: "Hour", pronunciation: "aw-er", uz: "Soat"},
+        ]
+      }
+    ];
 
-    <main>
-    <section class="hero">
-    <div class="hero-container container">
-    <div class="hero-content">
-    <h2 class="hero-heading">Lorem ipsum dolor sit amet.</h2>
-    <p class="hero-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis, dolorem! Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus assumenda eum rerum aliquam nihil beatae officia vitae quisquam minima eius?</p>
-    <a href="#" class="main-link main-link-solid">Qabulga yozilish</a>
-    </div>
-    <img class="hero-img" src="img/foto.jpg" alt="foto" width="500" height="400">
-    </div>
-    </section>
-    </main>
+    let currentDay = 0;
+    const dayTitle = document.getElementById('dayTitle');
+    const wordsContainer = document.getElementById('wordsContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
+    function showDay(dayIndex) {
+      wordsContainer.innerHTML = '';
+      dayTitle.textContent = weekWords[dayIndex].day;
+      weekWords[dayIndex].words.forEach(word => {
+        const div = document.createElement('div');
+        div.className = 'word';
+        div.innerHTML = `<span>${word.text}</span><span>${word.pronunciation}</span><span>${word.uz}</span>`;
+        div.addEventListener('click', () => {
+          speechSynthesis.cancel(); // avvalgi audio to'xtatiladi
+          const utterance = new SpeechSynthesisUtterance(word.text);
+          utterance.lang = 'en-US';
+          speechSynthesis.speak(utterance);
+        });
+        wordsContainer.appendChild(div);
+      });
+    }
 
-    <!-- site-footer -->    
+    prevBtn.addEventListener('click', () => {
+      if(currentDay > 0) currentDay--;
+      showDay(currentDay);
+    });
 
-    <footer class="site-footer">
-    <div class="site-footer-container container">
-    <a class="site-header-logo site-footer-logo" href="#">
-        <img class="site-header-logo-img" src="img/avatar.jpg" alt="avatar" width="50" height="50">
-        <span class="site-header-logo-text">Learnncode</span>
-    </a>
-    <nav class="sitenav sitenav-footer">
-    <ul class="sitenav-list">
-    <li class="sitenav-item"><a class="sitenav-link" href="#">Men xaqimda</a></li>
-    <li class="sitenav-item"><a class="sitenav-link" href="#">g`oyalar</a></li>
-    <li class="sitenav-item"><a class="sitenav-link" href="#">o`yinlar</a></li>
-    <li class="sitenav-item"><a class="sitenav-link" href="#">topishmoqlar</a></li>
-    <li class="sitenav-item"><a class="sitenav-link" href="#">mening qiziqishlarim</a></li>
-    </ul>
-    </nav>
-    </div>
-    </footer>
+    nextBtn.addEventListener('click', () => {
+      if(currentDay < weekWords.length - 1) currentDay++;
+      showDay(currentDay);
+    });
 
-    <script src="js/main.js"></script>
+    showDay(currentDay);
+  </script>
 </body>
 </html>
